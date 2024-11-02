@@ -33,27 +33,24 @@ export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
     const wordInt: number = parseInt(word, 10)
     const guessInt: number = parseInt(guess, 10)
 
-    // 23
-    //40  
-
     if (!isGuessed) return ""
 
     if (wordInt == guessInt) {
-      return <Crosshair />
+      return <Crosshair strokeWidth={4} />
     }
 
     if (Math.abs(wordInt - guessInt) < 25) {
       if (wordInt > guessInt) {
-        return <ChevronUp />
+        return <ChevronUp strokeWidth={4} />
       } else {
-        return <ChevronDown />
+        return <ChevronDown strokeWidth={4} />
       }
     }
 
     if (wordInt > guessInt) {
-      return <ChevronsUp />
+      return <ChevronsUp strokeWidth={4} />
     } else {
-      return <ChevronsDown />
+      return <ChevronsDown strokeWidth={4} />
     }
   }
 
@@ -66,6 +63,7 @@ export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
       mt="xs"
       direction="row"
       wrap="wrap"
+      pl={70}
     >
       {new Array(3).fill(0).map((_, i) => {
         return (
@@ -75,6 +73,7 @@ export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              fontSize: "24px"
             }}
             bd="2px solid white"
             mih="75"
@@ -94,8 +93,8 @@ export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
         }}
         bd="2px solid white"
         bg={GetSquareColor()}
-        mih="75"
-        miw="75"
+        mih="60"
+        miw="60"
         c="white"
       >
         {GetSquareIcon()}

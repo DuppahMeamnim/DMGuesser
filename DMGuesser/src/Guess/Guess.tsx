@@ -1,8 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useStore } from "../useStore";
 import NumberBox from "../NumberBox/NumberBox";
+import { Box } from "@mantine/core";
+import { motion } from "framer-motion";
 
 export default function Guess() {
+    const MotionBox = motion(Box);
+
     const guesses = useStore((state) => state.guesses);
     const setGuesses = useStore((state) => state.setGuesses);
 
@@ -15,22 +19,26 @@ export default function Guess() {
     const hasGameEnded = useStore((state) => state.hasGameEnded);
     const setHasGameEnded = useStore((state) => state.setHasGameEnded)
 
-    const hasWon = (): boolean => guesses[currentGuess] === word
+    const prevGuessesLength = useRef(guesses.length);
+    const isNewItemAdded = guesses.length > prevGuessesLength.current;
+
+    const hasWon = (): boolean => guesses[0] === word
 
     const hasLost = (): boolean => currentGuess === 3
 
     const init = (): void => {
         setWord("0" + Math.floor(Math.random() * 100).toString())
-        setGuesses(new Array(4).fill(''))
+        setGuesses(new Array(1).fill(''))
         setCurrentGuess(0)
     }
 
     const submitGuess = (): void => {
-        if (guesses[currentGuess].length == 3) {
+        console.log(word)
+        if (guesses[0].length == 3) {
             setCurrentGuess(currentGuess + 1)
 
-            const bWon = hasWon()
-            const bLost = hasLost()
+            const bWon: boolean = hasWon()
+            const bLost: boolean = hasLost()
 
             if (bWon || bLost) {
                 setHasGameEnded(true)
@@ -40,15 +48,21 @@ export default function Guess() {
                 } else if (bLost) {
                     console.log("LOST")
                 }
+            } else {
+                const newGuesses: string[] = [...guesses]
+                newGuesses.unshift('')
+
+                setGuesses(newGuesses)
             }
+
         }
     }
 
     const removeNumberFromGuess = (): void => {
         const newGuesses = [...guesses]
-        newGuesses[currentGuess] = newGuesses[currentGuess].slice(
+        newGuesses[0] = newGuesses[0].slice(
             0,
-            newGuesses[currentGuess].length - 1
+            newGuesses[0].length - 1
         )
 
         setGuesses(newGuesses)
@@ -56,7 +70,7 @@ export default function Guess() {
 
     const addNumberToGuess = (key: string): void => {
         const newGuesses = [...guesses];
-        newGuesses[currentGuess] += key
+        newGuesses[0] += key
 
         setGuesses(newGuesses)
     }
@@ -73,11 +87,10 @@ export default function Guess() {
             removeNumberFromGuess()
         }
 
-        if (guesses[currentGuess].length < 3 && e.key.match(/^[0-9]$/)) {
+        if (guesses[0].length < 3 && e.key.match(/^[0-9]$/)) {
             addNumberToGuess(e.key)
         }
     }
-
 
     useEffect(() => init(), [])
 
@@ -89,15 +102,33 @@ export default function Guess() {
         }
     }, [handleKeyup])
 
+    useEffect(() => {
+        prevGuessesLength.current = guesses.length;
+    }, [guesses.length]);
 
     return (
-        guesses.map((_: string, i: number) => (
-            (
-                <NumberBox
+        <Box
+            h={400}
+            w={500}
+            style={{
+                position: 'static',
+            }}
+        >
+            {guesses.map((_: string, i: number) => (
+                <MotionBox
                     key={i}
-                    word={word}
-                    guess={guesses[i]}
-                    isGuessed={i < currentGuess} />
-            )))
+                    initial={isNewItemAdded && (i === 1 ? { opacity: 0, y: -20 } : i !== 0 ? { opacity: 1, y: -20 } : {})}
+                    animate={isNewItemAdded && (i !== 0 ? { opacity: 1, y: 0 } : i !== 0 ? { opacity: 1, y: 0 } : {})}
+                    transition={{ duration: 0.4 }}
+                >
+                    <NumberBox
+                        key={i}
+                        word={word}
+                        guess={guesses[i]}
+                        isGuessed={i !== 0 || hasGameEnded} />
+                </MotionBox>
+            ))
+            }
+        </Box >
     );
 }
