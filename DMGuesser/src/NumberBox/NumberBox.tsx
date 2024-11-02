@@ -1,6 +1,6 @@
-import { Box, Flex } from "@mantine/core";
-import { useEffect } from "react";
+import { Flex, Paper } from "@mantine/core";
 import { ChevronDown, ChevronsDown, ChevronsUp, ChevronUp, Crosshair } from "react-feather";
+import { motion } from 'framer-motion'
 
 interface NumberBoxProps {
   word: string;
@@ -12,11 +12,11 @@ interface NumberBoxProps {
 
 export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
 
-  const GetSquareColor = (): string => {
+  const GetSquareColor = (isOutline: boolean): string => {
     const wordInt: number = parseInt(word, 10)
     const guessInt: number = parseInt(guess, 10)
 
-    if (!isGuessed) return "black"
+    if (!isGuessed) return isOutline ? "#c4c4c4" : "#020202"
 
     if (wordInt == guessInt) {
       return "green"
@@ -63,42 +63,56 @@ export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
       mt="xs"
       direction="row"
       wrap="wrap"
-      pl={70}
+      pl={30}
     >
       {new Array(3).fill(0).map((_, i) => {
         return (
-          <Box
-            key={i}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              fontSize: "24px"
-            }}
-            bd="2px solid white"
-            mih="75"
-            bg="black"
-            miw="75"
-            c="white">
-            {guess[i]}
-          </Box>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Paper
+              key={i}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "30px",
+                userSelect: 'none'
+              }}
+              bd="3px solid #c4c4c4"
+              radius={15}
+              mih="75"
+              bg="#020202"
+              miw="75"
+              c="#a1a1a1">
+              {guess[i]}
+            </Paper>
+          </motion.a>
         )
       })
       }
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        bd="2px solid white"
-        bg={GetSquareColor()}
-        mih="60"
-        miw="60"
-        c="white"
+      <motion.a
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
       >
-        {GetSquareIcon()}
-      </Box>
-    </Flex>
+        <Paper
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            userSelect: 'none',
+          }}
+          bd={'3px solid ' + GetSquareColor(true)}
+          bg={GetSquareColor(false)}
+          mih="60"
+          miw="60"
+          c="white"
+          radius={100}
+        >
+          {GetSquareIcon()}
+        </Paper>
+      </motion.a>
+    </Flex >
   );
 }
