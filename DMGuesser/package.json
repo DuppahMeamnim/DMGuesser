@@ -12,8 +12,11 @@
   "dependencies": {
     "@mantine/core": "^7.13.4",
     "@mantine/hooks": "^7.13.4",
+    "mobx-react-lite": "^4.0.7",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-native-external-keyboard": "^0.3.11",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
