@@ -3,8 +3,9 @@ import { useStore } from "../useStore";
 import NumberBox from "../NumberBox/NumberBox";
 import { Box } from "@mantine/core";
 import { motion } from "framer-motion";
+import damageData from "../DamageData/damageData";
 
-export default function Guess() {
+export default function Guess(damageData: damageData) {
     const MotionBox = motion(Box);
 
     const guesses = useStore((state) => state.guesses);
@@ -27,7 +28,8 @@ export default function Guess() {
     const hasLost = (): boolean => currentGuess === 3
 
     const init = (): void => {
-        setWord("0" + Math.floor(Math.random() * 100).toString())
+        console.log("WORD: " + damageData.word)
+        setWord(damageData.word)
         setGuesses(new Array(1).fill(''))
         setCurrentGuess(0)
     }
