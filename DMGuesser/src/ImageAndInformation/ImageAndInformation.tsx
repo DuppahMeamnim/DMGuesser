@@ -1,8 +1,6 @@
 import { useDisclosure } from "@mantine/hooks";
 import damageData from "../DamageData/damageData";
-import { Image, Paper, Popover, Text } from "@mantine/core";
-import { Box } from "react-feather";
-
+import { Image, Paper, Popover } from "@mantine/core";
 
 export default function ImageAndInformation(damageData: damageData) {
     const [opened, { close, open }] = useDisclosure(false);
