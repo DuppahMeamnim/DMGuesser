@@ -20,8 +20,8 @@ export default function App() {
     theme={{
       fontFamily: 'Aldrich, sans-serif'
     }}
-    withGlobalStyles
-    withNormalizeCSS> {
+    
+    > {
       <Box
         style={{
           width: "100vw",

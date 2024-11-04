@@ -2,11 +2,10 @@ import { useEffect, useRef } from "react";
 import { useStore } from "../useStore";
 import NumberBox from "../NumberBox/NumberBox";
 import { Box } from "@mantine/core";
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 import damageData from "../DamageData/damageData";
 
 export default function Guess(damageData: damageData) {
-    const MotionBox = motion(Box);
 
     const guesses = useStore((state) => state.guesses);
     const setGuesses = useStore((state) => state.setGuesses);
@@ -117,7 +116,7 @@ export default function Guess(damageData: damageData) {
             }}
         >
             {guesses.map((_: string, i: number) => (
-                <MotionBox
+                <motion.div
                     key={i}
                     initial={isNewItemAdded && (i === 1 ? { opacity: 0, y: -20 } : i !== 0 ? { opacity: 1, y: -20 } : {})}
                     animate={isNewItemAdded && (i !== 0 ? { opacity: 1, y: 0 } : i !== 0 ? { opacity: 1, y: 0 } : {})}
@@ -128,7 +127,7 @@ export default function Guess(damageData: damageData) {
                         word={word}
                         guess={guesses[i]}
                         isGuessed={i !== 0 || hasGameEnded} />
-                </MotionBox>
+                </motion.div>
             ))
             }
         </Box >
