@@ -1,9 +1,10 @@
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import damageData from "../DamageData/damageData";
 import { Image, Paper, Popover } from "@mantine/core";
 
 export default function ImageAndInformation(damageData: damageData) {
     const [opened, { close, open }] = useDisclosure(false);
+    const isMobile = useMediaQuery('(max-width: 1100px)')
 
     return (
         <Popover
@@ -17,8 +18,7 @@ export default function ImageAndInformation(damageData: damageData) {
                     onMouseEnter={open}
                     onMouseLeave={close}
                     radius={15}
-                    h={300}
-                    w={450}
+                    w={isMobile ? "80vw" : "30vw"}
                     mb="25px"
                     fit="cover"
                     src={damageData.image}
