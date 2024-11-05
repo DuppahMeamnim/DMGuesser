@@ -18,31 +18,37 @@ export default function App() {
     wentThrough: "Nothing"
   };
 
-  const hiddenInputRef = useRef<HTMLInputElement>(null);
   const isMobile = useMediaQuery('(max-width: 1100px)')
+  const hiddenInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    hiddenInputRef?.current?.focus()
+    // Focus the input to open the keyboard
+    hiddenInputRef.current?.focus();
 
+    // Use a short delay before hiding the input
     setTimeout(() => {
       if (hiddenInputRef.current) {
         hiddenInputRef.current.style.position = 'absolute';
         hiddenInputRef.current.style.opacity = '0';
         hiddenInputRef.current.style.left = '-9999px';
       }
-    }, 100);
-  }, [])
+    }, 100); // Small delay to allow keyboard to open
+  }, []);
 
   return (
     <MantineProvider theme={{ fontFamily: 'Aldrich, sans-serif' }}>
       <input
         ref={hiddenInputRef}
         aria-hidden="true"
+        autoFocus
         style={{
-          position: 'absolute',
-          opacity: 0,
-          left: '-9999px',
-        }} />
+          opacity: 1,
+          position: 'fixed',
+          top: '10px', // Temporarily on-screen position
+          left: '10px',
+          zIndex: 1,
+        }}
+      />
       <Box
         style={{
           width: "100vw",
