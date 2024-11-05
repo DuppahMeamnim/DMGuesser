@@ -21,7 +21,17 @@ export default function App() {
   const hiddenInputRef = useRef<HTMLInputElement>(null);
   const isMobile = useMediaQuery('(max-width: 1100px)')
 
-  useEffect(() => hiddenInputRef?.current?.focus(), [])
+  useEffect(() => {
+    hiddenInputRef?.current?.focus()
+
+    setTimeout(() => {
+      if (hiddenInputRef.current) {
+        hiddenInputRef.current.style.position = 'absolute';
+        hiddenInputRef.current.style.opacity = '0';
+        hiddenInputRef.current.style.left = '-9999px';
+      }
+    }, 100);
+  }, [])
 
   return (
     <MantineProvider theme={{ fontFamily: 'Aldrich, sans-serif' }}>
