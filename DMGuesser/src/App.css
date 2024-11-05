@@ -1,0 +1,13 @@
+.mobile {
+    display: none;
+}
+
+@media only screen {
+    .mobile {
+        display: block
+    }
+
+    .pc {
+        display: none;
+    }
+}

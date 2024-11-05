@@ -18,10 +18,10 @@ export default function App() {
 
   return <MantineProvider
     theme={{
-      fontFamily: 'Aldrich, sans-serif'
+      fontFamily: 'Aldrich, sans-serif',
     }}
-    
-    > {
+
+  > {
       <Box
         style={{
           width: "100vw",
@@ -35,7 +35,8 @@ export default function App() {
       >
         <Box
           style={{
-            width: "600px",
+            class: "pc",
+            width: "40vw",
             height: "100vh",
             backgroundColor: "#121212",
             display: "flex",
