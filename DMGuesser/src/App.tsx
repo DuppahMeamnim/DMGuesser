@@ -59,24 +59,7 @@ export default function App() {
 
           <Box style={{ flexGrow: 1 }} />
 
-          {isMobile && <input
-            type='number'
-            inputMode='numeric'
-            pattern="[0-9]*"
-            style={{
-              width: '5vw',        // Set the width
-              height: '5vw',       // Set the height
-              borderRadius: '50%',   // Make it a circle
-              backgroundColor: "rgba(201, 76, 76, 1)", // Background color
-              color: 'white',        // Text color
-              border: 'none',        // Remove border
-              textAlign: 'center',   // Center text
-              fontSize: '20px',      // Font size for visibility
-              outline: 'none',       // Remove outline on focus
-              padding: '0',          // Remove default padding
-              boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)', // Optional shadow for effect
-            }}
-          />}
+          {isMobile} //Insert here custom keyboard component
         </Box>
       </Box>
     </MantineProvider>
