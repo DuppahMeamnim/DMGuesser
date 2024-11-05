@@ -1,6 +1,7 @@
 import { Flex, Paper } from "@mantine/core";
 import { ChevronDown, ChevronsDown, ChevronsUp, ChevronUp, Crosshair } from "react-feather";
 import { motion } from 'framer-motion'
+import { useMediaQuery } from "@mantine/hooks";
 
 interface NumberBoxProps {
   word: string;
@@ -54,44 +55,42 @@ export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
     }
   }
 
+  const isMobile = useMediaQuery('(max-width: 1100px)')
+
   return (
     <Flex
       justify="center"
       align="center"
-      mih={50}
-      gap="xs"
-      mt="xs"
-      direction="row"
-      wrap="wrap"
-      pl={30}
+      gap={isMobile ? "10px" : ".5vw"}
+      mt={isMobile ? ".75vh" : ".75vh"}
+      pl={isMobile ? "10px" : ".75vw"}
     >
-      {new Array(3).fill(0).map((_, i) => {
-        return (
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+      {new Array(3).fill(0).map((_, i) => (
+        <motion.a
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          key={i}
+        >
+          <Paper
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              fontSize: isMobile ? "4vw" : "1.5vw",
+              userSelect: 'none',
+            }}
+            bd="1% solid #c4c4c4"
+            radius={15}
+            h={isMobile ? "8vh" : "7vh"}
+            w={isMobile ? "8vh" : "7vh"}
+            bg="#020202"
+            c="#a1a1a1"
           >
-            <Paper
-              key={i}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "30px",
-                userSelect: 'none'
-              }}
-              bd="3px solid #c4c4c4"
-              radius={15}
-              mih="75"
-              bg="#020202"
-              miw="75"
-              c="#a1a1a1">
-              {guess[i]}
-            </Paper>
-          </motion.a>
-        )
-      })
-      }
+            {guess[i]}
+          </Paper>
+        </motion.a>
+      ))}
+
       <motion.a
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -103,16 +102,16 @@ export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
             alignItems: "center",
             userSelect: 'none',
           }}
-          bd={'3px solid ' + GetSquareColor(true)}
+          bd={`3px solid ${GetSquareColor(true)}`}
           bg={GetSquareColor(false)}
-          mih="60"
-          miw="60"
+          h={isMobile ? "6vh" : "6vh"}
+          w={isMobile ? "6vh" : "6vh"}
           c="white"
           radius={100}
         >
           {GetSquareIcon()}
         </Paper>
       </motion.a>
-    </Flex >
+    </Flex>
   );
 }

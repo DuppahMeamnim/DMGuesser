@@ -4,6 +4,7 @@ import NumberBox from "../NumberBox/NumberBox";
 import { Box } from "@mantine/core";
 import { motion } from 'framer-motion'
 import damageData from "../DamageData/damageData";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function Guess(damageData: damageData) {
 
@@ -107,10 +108,13 @@ export default function Guess(damageData: damageData) {
         prevGuessesLength.current = guesses.length;
     }, [guesses.length]);
 
+    const isMobile = useMediaQuery('(max-width: 1100px)')
+
     return (
         <Box
             h={400}
             w={500}
+            mt={isMobile ? "5vh" : "2vh"}
             style={{
                 position: 'static',
             }}
