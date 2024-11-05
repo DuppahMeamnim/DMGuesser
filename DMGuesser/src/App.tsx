@@ -1,6 +1,6 @@
 import "./App.css";
 import "@mantine/core/styles.css";
-import { MantineProvider, Box, Text, TextInput } from "@mantine/core";
+import { MantineProvider, Box, Text } from "@mantine/core";
 import { useMediaQuery } from '@mantine/hooks';
 import Guess from "./Guess/Guess";
 import exampleImage from './assets/csExampleImage.png';
