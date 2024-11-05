@@ -6,6 +6,7 @@ import Guess from "./Guess/Guess";
 import exampleImage from './assets/csExampleImage.png';
 import damageData from "./DamageData/damageData";
 import ImageAndInformation from "./ImageAndInformation/ImageAndInformation";
+import { useEffect, useRef } from "react";
 
 export default function App() {
   const damageData: damageData = {
@@ -17,16 +18,21 @@ export default function App() {
     wentThrough: "Nothing"
   };
 
+  const hiddenInputRef = useRef<HTMLInputElement>(null);
   const isMobile = useMediaQuery('(max-width: 1100px)')
+
+  useEffect(() => hiddenInputRef?.current?.focus(), [])
 
   return (
     <MantineProvider theme={{ fontFamily: 'Aldrich, sans-serif' }}>
-      <TextInput style={{
-        position: 'absolute',
-        opacity: 0,
-        left: '-9999px',
-      }}
-        aria-hidden="true" />
+      <input
+        ref={hiddenInputRef}
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          opacity: 0,
+          left: '-9999px',
+        }} />
       <Box
         style={{
           width: "100vw",
