@@ -1,12 +1,12 @@
 import "./App.css";
 import "@mantine/core/styles.css";
-import { MantineProvider, Box, Text } from "@mantine/core";
+import { MantineProvider, Box, Text, TextInput } from "@mantine/core";
 import { useMediaQuery } from '@mantine/hooks';
 import Guess from "./Guess/Guess";
 import exampleImage from './assets/csExampleImage.png';
 import damageData from "./DamageData/damageData";
 import ImageAndInformation from "./ImageAndInformation/ImageAndInformation";
-import { useEffect, useRef } from "react";
+import MobileKeyboard from "./CustomKeyboard/MobileKeyboard";
 
 export default function App() {
   const damageData: damageData = {
@@ -19,36 +19,16 @@ export default function App() {
   };
 
   const isMobile = useMediaQuery('(max-width: 1100px)')
-  const hiddenInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    // Focus the input to open the keyboard
-    hiddenInputRef.current?.focus();
-
-    // Use a short delay before hiding the input
-    setTimeout(() => {
-      if (hiddenInputRef.current) {
-        hiddenInputRef.current.style.position = 'absolute';
-        hiddenInputRef.current.style.opacity = '0';
-        hiddenInputRef.current.style.left = '-9999px';
-      }
-    }, 100); // Small delay to allow keyboard to open
-  }, []);
+  const handleMobileKeyPress = (key: string) => {
+    if (key === "backspace") {
+    } else if (key === "enter") {
+    } else {
+    }
+  };
 
   return (
     <MantineProvider theme={{ fontFamily: 'Aldrich, sans-serif' }}>
-      <input
-        ref={hiddenInputRef}
-        aria-hidden="true"
-        autoFocus
-        style={{
-          opacity: 1,
-          position: 'fixed',
-          top: '10px', // Temporarily on-screen position
-          left: '10px',
-          zIndex: 1,
-        }}
-      />
       <Box
         style={{
           width: "100vw",
@@ -84,6 +64,27 @@ export default function App() {
           </Text>
           <ImageAndInformation {...damageData} />
           <Guess {...damageData} />
+
+          <Box style={{ flexGrow: 1 }} />
+
+          {isMobile && <input
+            type='number'
+            inputMode='numeric'
+            pattern="[0-9]*"
+            style={{
+              width: '5vw',        // Set the width
+              height: '5vw',       // Set the height
+              borderRadius: '50%',   // Make it a circle
+              backgroundColor: "rgba(201, 76, 76, 1)", // Background color
+              color: 'white',        // Text color
+              border: 'none',        // Remove border
+              textAlign: 'center',   // Center text
+              fontSize: '20px',      // Font size for visibility
+              outline: 'none',       // Remove outline on focus
+              padding: '0',          // Remove default padding
+              boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)', // Optional shadow for effect
+            }}
+          />}
         </Box>
       </Box>
     </MantineProvider>
