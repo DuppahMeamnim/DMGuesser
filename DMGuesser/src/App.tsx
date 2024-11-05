@@ -1,12 +1,11 @@
 import "./App.css";
 import "@mantine/core/styles.css";
-import { MantineProvider, Box, Text, TextInput } from "@mantine/core";
+import { MantineProvider, Box, Text } from "@mantine/core";
 import { useMediaQuery } from '@mantine/hooks';
 import Guess from "./Guess/Guess";
 import exampleImage from './assets/csExampleImage.png';
 import damageData from "./DamageData/damageData";
 import ImageAndInformation from "./ImageAndInformation/ImageAndInformation";
-import MobileKeyboard from "./CustomKeyboard/MobileKeyboard";
 
 export default function App() {
   const damageData: damageData = {
@@ -19,13 +18,6 @@ export default function App() {
   };
 
   const isMobile = useMediaQuery('(max-width: 1100px)')
-
-  const handleMobileKeyPress = (key: string) => {
-    if (key === "backspace") {
-    } else if (key === "enter") {
-    } else {
-    }
-  };
 
   return (
     <MantineProvider theme={{ fontFamily: 'Aldrich, sans-serif' }}>
