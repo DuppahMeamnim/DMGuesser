@@ -4,10 +4,16 @@ import { MantineProvider, Box, Text } from "@mantine/core";
 import { useMediaQuery } from '@mantine/hooks';
 import Guess from "./Guess/Guess";
 import exampleImage from './assets/csExampleImage.png';
-import damageData from "./DamageData/damageData";
 import ImageAndInformation from "./ImageAndInformation/ImageAndInformation";
-
+import Numpad from "./Numpad/Numpad";
+import  damageData  from './DamageData/damageData';
+import { useRef } from "react";
 export default function App() {
+
+  const guessRef = useRef<{ NumKeyPressed: (numKey: string) => void }>(null);  
+  
+  const isMobile = useMediaQuery('(max-width: 1100px)');
+
   const damageData: damageData = {
     image: exampleImage,
     word: "034",
@@ -16,8 +22,13 @@ export default function App() {
     hitLocation: "Shoulder",
     wentThrough: "Nothing"
   };
+  const handleButtonClick = (value: string): string => {
+    if (guessRef.current) {  
+      guessRef.current.NumKeyPressed(value);  
+    }
+    return value;
+  };
 
-  const isMobile = useMediaQuery('(max-width: 1100px)')
 
   return (
     <MantineProvider theme={{ fontFamily: 'Aldrich, sans-serif' }}>
@@ -55,11 +66,9 @@ export default function App() {
             DAMAGEDLE
           </Text>
           <ImageAndInformation {...damageData} />
-          <Guess {...damageData} />
-
+          <Guess ref={guessRef} damageData={damageData} />
           <Box style={{ flexGrow: 1 }} />
-
-          {isMobile} //Insert here custom keyboard component
+          <Numpad onButtonClick={handleButtonClick} />
         </Box>
       </Box>
     </MantineProvider>
