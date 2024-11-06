@@ -22,7 +22,7 @@ export default function Numpad({ onButtonClick }: NumpadProps) {
         alignItems: "center",
         marginTop: isMobile ? "1vh" : "2vh",
         width: isMobile ? "90vw" : "40vw",
-        marginBottom: isMobile ? "3vh" : "2vh"
+        marginBottom: isMobile ? "6vh" : "2vh"
       }}
     >
       {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((num, i) => (
