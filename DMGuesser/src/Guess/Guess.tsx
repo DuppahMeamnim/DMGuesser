@@ -89,6 +89,9 @@ const Guess = forwardRef(({ damageData }: GuessProps, ref) => {
   };
 
   const NumKeyPressed = (numKey: string): void => {
+    if (hasGameEnded) return;
+
+
     if (numKey === 'Backspace') {
       removeNumberFromGuess();
     }else if (guesses[0].length < 3 && numKey.match(/^[0-9]$/)) {
