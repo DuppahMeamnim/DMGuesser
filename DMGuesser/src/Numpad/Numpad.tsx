@@ -22,7 +22,7 @@ export default function Numpad({ onButtonClick }: NumpadProps) {
         alignItems: "center",
         marginTop: isMobile ? "1vh" : "2vh",
         width: isMobile ? "90vw" : "40vw",
-        marginBottom:  isMobile ? "2vh" : "2vh"
+        marginBottom: isMobile ? "6vh" : "2vh"
       }}
     >
       {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((num, i) => (
@@ -40,17 +40,17 @@ export default function Numpad({ onButtonClick }: NumpadProps) {
           }}
           bd="1% solid #c4c4c4"
           radius={10}
-          h = {isMobile ? "7vh" : "7vh"}
-          w = {isMobile ? "10vw" : "4.5vw"}
+          h={isMobile ? "7vh" : "7vh"}
+          w={isMobile ? "10vw" : "4.5vw"}
           bg="#020202"
           c="#a1a1a1"
 
           onClick={() => onButtonClick("Backspace")}
         >
-          <Delete size={isMobile ? "4vw" : "1.5vw"} /> 
+          <Delete size={isMobile ? "4vw" : "1.5vw"} />
         </Paper>
       </motion.a>
-        
+
     </Flex>
   );
 }
