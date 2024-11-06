@@ -1,6 +1,6 @@
 import "./App.css";
 import "@mantine/core/styles.css";
-import { MantineProvider, Box, Text, TextInput } from "@mantine/core";
+import { MantineProvider, Box, Text } from "@mantine/core";
 import { useMediaQuery } from '@mantine/hooks';
 import Guess from "./Guess/Guess";
 import exampleImage from './assets/csExampleImage.png';
@@ -21,12 +21,6 @@ export default function App() {
 
   return (
     <MantineProvider theme={{ fontFamily: 'Aldrich, sans-serif' }}>
-      <TextInput style={{
-        position: 'absolute',
-        opacity: 0,
-        left: '-9999px',
-      }}
-        aria-hidden="true" />
       <Box
         style={{
           width: "100vw",
@@ -62,6 +56,10 @@ export default function App() {
           </Text>
           <ImageAndInformation {...damageData} />
           <Guess {...damageData} />
+
+          <Box style={{ flexGrow: 1 }} />
+
+          {isMobile} //Insert here custom keyboard component
         </Box>
       </Box>
     </MantineProvider>

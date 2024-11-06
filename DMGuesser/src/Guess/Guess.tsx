@@ -5,6 +5,7 @@ import { Box } from "@mantine/core";
 import { motion } from 'framer-motion'
 import damageData from "../DamageData/damageData";
 import { useMediaQuery } from "@mantine/hooks";
+import Popup from "./WinLosePopup";
 
 export default function Guess(damageData: damageData) {
 
@@ -20,6 +21,9 @@ export default function Guess(damageData: damageData) {
     const hasGameEnded = useStore((state) => state.hasGameEnded);
     const setHasGameEnded = useStore((state) => state.setHasGameEnded)
 
+    const openModal = useStore((state) => state.openModal);
+    const setOpenModal = useStore((state) => state.setOpenModal)
+
     const prevGuessesLength = useRef(guesses.length);
     const isNewItemAdded = guesses.length > prevGuessesLength.current;
 
@@ -28,14 +32,12 @@ export default function Guess(damageData: damageData) {
     const hasLost = (): boolean => currentGuess === 3
 
     const init = (): void => {
-        console.log("WORD: " + damageData.word)
         setWord(damageData.word)
         setGuesses(new Array(1).fill(''))
         setCurrentGuess(0)
     }
 
     const submitGuess = (): void => {
-        console.log(word)
         if (guesses[0].length == 3) {
             setCurrentGuess(currentGuess + 1)
 
@@ -44,7 +46,7 @@ export default function Guess(damageData: damageData) {
 
             if (bWon || bLost) {
                 setHasGameEnded(true)
-
+                setTimeout(() => setOpenModal(true), 500)
                 if (bWon) {
                     console.log("WON")
                 } else if (bLost) {
@@ -56,7 +58,6 @@ export default function Guess(damageData: damageData) {
 
                 setGuesses(newGuesses)
             }
-
         }
     }
 
@@ -119,6 +120,7 @@ export default function Guess(damageData: damageData) {
                 position: 'static',
             }}
         >
+            <Popup word={word} hasGameEnded={hasGameEnded} openModal={openModal} hasWon={hasWon()} currentGuess={currentGuess} />
             {guesses.map((_: string, i: number) => (
                 <motion.div
                     key={i}

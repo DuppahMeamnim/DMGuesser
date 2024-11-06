@@ -12,6 +12,9 @@ interface GameState {
 
     hasGameEnded: boolean;
     setHasGameEnded: (hasGameEnded: boolean) => void;
+
+    openModal: boolean;
+    setOpenModal: (openModal: boolean) => void;
 }
 
 export const useStore = create<GameState>((set) => ({
@@ -25,5 +28,8 @@ export const useStore = create<GameState>((set) => ({
     setCurrentGuess: (currentGuess) => set({ currentGuess }),
 
     hasGameEnded: false,
-    setHasGameEnded: (hasGameEnded) => set({ hasGameEnded })
+    setHasGameEnded: (hasGameEnded) => set({ hasGameEnded }),
+
+    openModal: false,
+    setOpenModal: (openModal) => set({ openModal })
 }));
