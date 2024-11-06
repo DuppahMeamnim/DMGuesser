@@ -1,4 +1,4 @@
-import { Paper } from '@mantine/core';
+import { Paper, Flex } from '@mantine/core';
 import Button from './Button';
 import { useMediaQuery } from "@mantine/hooks";
 import { motion } from 'framer-motion';
@@ -12,7 +12,7 @@ export default function Numpad({ onButtonClick }: NumpadProps) {
   const isMobile = useMediaQuery("(max-width: 1100px)");
 
   return (
-    <div
+    <Flex
       style={{
         display: "flex",
         flexDirection: "row",
@@ -21,6 +21,7 @@ export default function Numpad({ onButtonClick }: NumpadProps) {
         gap: isMobile ? "3px" : ".2vw",
         alignItems: "center",
         marginTop: isMobile ? "1vh" : "2vh",
+        width: isMobile ? "90vw" : "40vw"
       }}
     >
       {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((num, i) => (
@@ -38,8 +39,8 @@ export default function Numpad({ onButtonClick }: NumpadProps) {
           }}
           bd="1% solid #c4c4c4"
           radius={10}
-          h={"7vh"}
-          w={"4.5vh"}
+          h = {isMobile ? "7vh" : "7vh"}
+          w = {isMobile ? "10vw" : "4.5vw"}
           bg="#020202"
           c="#a1a1a1"
 
@@ -49,6 +50,6 @@ export default function Numpad({ onButtonClick }: NumpadProps) {
         </Paper>
       </motion.a>
         
-    </div>
+    </Flex>
   );
 }

@@ -40,6 +40,7 @@ const Guess = forwardRef(({ damageData }: GuessProps, ref) => {
   };
 
   const submitGuess = (): void => {
+
     if (guesses[0].length === 3) {
       setCurrentGuess(currentGuess + 1);
 
@@ -134,6 +135,7 @@ const Guess = forwardRef(({ damageData }: GuessProps, ref) => {
             word={word}
             guess={guesses[i]}
             isGuessed={i !== 0 || hasGameEnded}
+            onClick={submitGuess}
           />
         </motion.div>
       ))}

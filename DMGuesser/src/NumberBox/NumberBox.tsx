@@ -1,5 +1,5 @@
-import { Flex, Paper } from "@mantine/core";
-import { ChevronDown, ChevronsDown, ChevronsUp, ChevronUp, Crosshair } from "react-feather";
+import { Flex, Paper, Text } from "@mantine/core";
+import { ChevronDown, ChevronsDown, ChevronsUp, ChevronUp, Crosshair, CornerDownLeft } from "react-feather";
 import { motion } from 'framer-motion'
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -7,11 +7,12 @@ interface NumberBoxProps {
   word: string;
   guess: string;
   isGuessed: boolean;
+  onClick: () => void;
 }
 
 <script src=""></script>
 
-export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
+export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBoxProps) {
 
   const GetSquareColor = (isOutline: boolean): string => {
     const wordInt: number = parseInt(word, 10)
@@ -34,24 +35,28 @@ export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
     const wordInt: number = parseInt(word, 10)
     const guessInt: number = parseInt(guess, 10)
 
-    if (!isGuessed) return ""
+    if (!isGuessed){
+      return <CornerDownLeft  strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
+      
+    }
 
     if (wordInt == guessInt) {
-      return <Crosshair strokeWidth={4} />
+      return <Crosshair strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
     }
 
     if (Math.abs(wordInt - guessInt) < 25) {
       if (wordInt > guessInt) {
-        return <ChevronUp strokeWidth={4} />
+        return <ChevronUp strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
       } else {
-        return <ChevronDown strokeWidth={4} />
+        return <ChevronDown strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
       }
     }
 
     if (wordInt > guessInt) {
-      return <ChevronsUp strokeWidth={4} />
+      return <ChevronsUp strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"} 
+      />
     } else {
-      return <ChevronsDown strokeWidth={4} />
+      return <ChevronsDown strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"} />
     }
   }
 
@@ -59,6 +64,7 @@ export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
 
   return (
     <Flex
+      onClick={onClick}
       justify="center"
       align="center"
       gap={isMobile ? "10px" : ".5vw"}
@@ -86,7 +92,7 @@ export default function NumberBox({ word, guess, isGuessed }: NumberBoxProps) {
             bg="#020202"
             c="#a1a1a1"
           >
-            {guess[i]}
+            {<Text size={isMobile ? "6vw" : "1.5vw"}>{guess[i]}</Text>}
           </Paper>
         </motion.a>
       ))}

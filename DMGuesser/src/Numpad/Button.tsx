@@ -39,8 +39,8 @@ const Button = ({ value, onClick }: ButtonProps) => {
         bd="1% solid #c4c4c4"
         c="#a1a1a1"
         radius={10}
-        h="7vh"
-        w="3.5vh"
+        h = {isMobile ? "7vh" : "7vh"}
+        w = {isMobile ? "7vw" : "2.5vw"}
         onClick={onClick}
       >
         {value}
