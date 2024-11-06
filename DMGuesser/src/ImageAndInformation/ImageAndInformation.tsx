@@ -16,6 +16,7 @@ export default function ImageAndInformation(damageData: damageData) {
             style={{ position: 'relative', display: 'inline-block' }}
         >
             <Image
+                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                 onClick={() => { opened ? close() : open() }}
                 radius={15}
                 width="100%"
@@ -28,6 +29,7 @@ export default function ImageAndInformation(damageData: damageData) {
             />
             {
                 <Flex
+                    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                     onClick={() => { opened ? close() : open() }}
                     w={isMobile ? "80vw" : "28vw"}
                     h={isMobile ? "43vw" : "15vw"}
