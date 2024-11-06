@@ -17,10 +17,9 @@ export default function App() {
   const damageData: damageData = {
     image: exampleImage,
     word: "034",
-    distance: "123",
     weapon: "ak47",
     hitLocation: "Shoulder",
-    wentThrough: "Nothing"
+    wentThrough: ["Nothing", "asd"]
   };
   const handleButtonClick = (value: string): string => {
     if (guessRef.current) {  
