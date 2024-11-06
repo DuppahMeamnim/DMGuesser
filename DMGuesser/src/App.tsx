@@ -6,12 +6,12 @@ import Guess from "./Guess/Guess";
 import exampleImage from './assets/csExampleImage.png';
 import ImageAndInformation from "./ImageAndInformation/ImageAndInformation";
 import Numpad from "./Numpad/Numpad";
-import  damageData  from './DamageData/damageData';
+import damageData from './DamageData/damageData';
 import { useRef } from "react";
 export default function App() {
 
-  const guessRef = useRef<{ NumKeyPressed: (numKey: string) => void }>(null);  
-  
+  const guessRef = useRef<{ NumKeyPressed: (numKey: string) => void }>(null);
+
   const isMobile = useMediaQuery('(max-width: 1100px)');
 
   const damageData: damageData = {
@@ -22,8 +22,8 @@ export default function App() {
     wentThrough: ["Nothing", "asd"]
   };
   const handleButtonClick = (value: string): string => {
-    if (guessRef.current) {  
-      guessRef.current.NumKeyPressed(value);  
+    if (guessRef.current) {
+      guessRef.current.NumKeyPressed(value);
     }
     return value;
   };
@@ -68,6 +68,7 @@ export default function App() {
           <Guess ref={guessRef} damageData={damageData} />
           <Box style={{ flexGrow: 1 }} />
           <Numpad onButtonClick={handleButtonClick} />
+          <Box style={{ flexGrow: 1 }} />
         </Box>
       </Box>
     </MantineProvider>
