@@ -1,6 +1,6 @@
 import { Paper } from "@mantine/core";
 import { motion } from "framer-motion";
-import { useHover } from "@mantine/hooks";
+import { useHover, useMediaQuery } from "@mantine/hooks";
 
 interface ButtonProps {
   value: string;
@@ -9,6 +9,7 @@ interface ButtonProps {
 
 const Button = ({ value, onClick }: ButtonProps) => {
   const { hovered, ref } = useHover();
+  const isMobile = useMediaQuery('(max-width: 1100px)');
 
   return (
     <motion.a
@@ -30,7 +31,7 @@ const Button = ({ value, onClick }: ButtonProps) => {
           alignItems: "center",
           userSelect: "none",
           cursor: "pointer",
-          fontSize: 20,
+          fontSize: isMobile ? "4vw" : "1.5vw",
           transition: "background-color 0.2s",
           backgroundColor: hovered ? "#292929" : "#020202",
 

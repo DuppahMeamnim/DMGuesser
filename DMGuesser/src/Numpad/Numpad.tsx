@@ -42,10 +42,10 @@ export default function Numpad({ onButtonClick }: NumpadProps) {
           w={"4.5vh"}
           bg="#020202"
           c="#a1a1a1"
-          
+
           onClick={() => onButtonClick("Backspace")}
         >
-          <Delete size={30} /> 
+          <Delete size={isMobile ? "4vw" : "1.5vw"} /> 
         </Paper>
       </motion.a>
         
