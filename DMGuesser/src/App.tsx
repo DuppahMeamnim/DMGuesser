@@ -34,7 +34,7 @@ export default function App() {
       <Box
         style={{
           width: "100vw",
-          height: "100vh",
+          height: isMobile ? "100svh" : "100vh",
           backgroundColor: "#020202",
           display: "flex",
           alignItems: "start",
@@ -68,7 +68,6 @@ export default function App() {
           <Guess ref={guessRef} damageData={damageData} />
           <Box style={{ flexGrow: 1 }} />
           <Numpad onButtonClick={handleButtonClick} />
-          <Box style={{ flexGrow: 1 }} />
         </Box>
       </Box>
     </MantineProvider>
