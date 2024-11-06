@@ -34,7 +34,7 @@ export default function App() {
       <Box
         style={{
           width: "100vw",
-          height: isMobile ? "100svh" : "100vh",
+          height: isMobile ? "100dvh" : "100vh",
           backgroundColor: "#020202",
           display: "flex",
           alignItems: "start",
