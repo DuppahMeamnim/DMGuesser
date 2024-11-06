@@ -21,7 +21,8 @@ export default function Numpad({ onButtonClick }: NumpadProps) {
         gap: isMobile ? "3px" : ".2vw",
         alignItems: "center",
         marginTop: isMobile ? "1vh" : "2vh",
-        width: isMobile ? "90vw" : "40vw"
+        width: isMobile ? "90vw" : "40vw",
+        marginBottom:  isMobile ? "2vh" : "2vh"
       }}
     >
       {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((num, i) => (
