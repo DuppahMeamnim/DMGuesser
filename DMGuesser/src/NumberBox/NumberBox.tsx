@@ -12,7 +12,7 @@ interface NumberBoxProps {
 
 <script src=""></script>
 
-export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBoxProps) {
+export default function NumberBox({ word, guess, isGuessed, onClick }: NumberBoxProps) {
 
   const GetSquareColor = (isOutline: boolean): string => {
     const wordInt: number = parseInt(word, 10)
@@ -60,11 +60,16 @@ export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBo
     }
   }
 
+  const handleClick = () => {
+    if (!isGuessed) {
+      onClick()
+    }
+  }
+
   const isMobile = useMediaQuery('(max-width: 1100px)')
 
   return (
     <Flex
-      onClick={onClick}
       justify="center"
       align="center"
       gap={isMobile ? "10px" : ".5dvw"}
@@ -108,12 +113,9 @@ export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBo
             alignItems: "center",
             userSelect: 'none',
           }}
-<<<<<<< Updated upstream
-          bd={`3px solid ${GetSquareColor(true)}`}
-=======
+          onClick={handleClick}
           onClick={handleClick}
           bd={`.5dvh solid ${GetSquareColor(true)}`}
->>>>>>> Stashed changes
           bg={GetSquareColor(false)}
           h={isMobile ? "6dvh" : "6dvh"}
           w={isMobile ? "6dvh" : "6dvh"}
