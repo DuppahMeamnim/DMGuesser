@@ -12,7 +12,7 @@ interface NumberBoxProps {
 
 <script src=""></script>
 
-export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBoxProps) {
+export default function NumberBox({ word, guess, isGuessed, onClick }: NumberBoxProps) {
 
   const GetSquareColor = (isOutline: boolean): string => {
     const wordInt: number = parseInt(word, 10)
@@ -35,28 +35,33 @@ export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBo
     const wordInt: number = parseInt(word, 10)
     const guessInt: number = parseInt(guess, 10)
 
-    if (!isGuessed){
-      return <CornerDownLeft  strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
-      
+    if (!isGuessed) {
+      return <CornerDownLeft strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"} />
     }
 
     if (wordInt == guessInt) {
-      return <Crosshair strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
+      return <Crosshair strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"} />
     }
 
     if (Math.abs(wordInt - guessInt) < 25) {
       if (wordInt > guessInt) {
-        return <ChevronUp strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
+        return <ChevronUp strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"} />
       } else {
-        return <ChevronDown strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
+        return <ChevronDown strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"} />
       }
     }
 
     if (wordInt > guessInt) {
-      return <ChevronsUp strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"} 
+      return <ChevronsUp strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}
       />
     } else {
       return <ChevronsDown strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"} />
+    }
+  }
+
+  const handleClick = () => {
+    if (!isGuessed) {
+      onClick()
     }
   }
 
@@ -64,7 +69,6 @@ export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBo
 
   return (
     <Flex
-      onClick={onClick}
       justify="center"
       align="center"
       gap={isMobile ? "10px" : ".5vw"}
@@ -108,6 +112,7 @@ export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBo
             alignItems: "center",
             userSelect: 'none',
           }}
+          onClick={handleClick}
           bd={`3px solid ${GetSquareColor(true)}`}
           bg={GetSquareColor(false)}
           h={isMobile ? "6vh" : "6vh"}
