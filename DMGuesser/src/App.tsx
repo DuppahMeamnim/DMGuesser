@@ -1,16 +1,18 @@
 import "./App.css";
 import "@mantine/core/styles.css";
-import { MantineProvider, Box, Text } from "@mantine/core";
+import { MantineProvider, Box, Text, Button } from "@mantine/core";
 import { useMediaQuery } from '@mantine/hooks';
 import Guess from "./Guess/Guess";
 import exampleImage from './assets/csExampleImage.png';
 import ImageAndInformation from "./ImageAndInformation/ImageAndInformation";
 import Numpad from "./Numpad/Numpad";
 import damageData from './DamageData/damageData';
-import { useRef } from "react";
-export default function App() {
+import { useRef, useState } from "react";
+import InstructionsPopUp from "./Instructions/InstructionsPopUp"; // Corrected the import
 
+export default function App() {
   const guessRef = useRef<{ NumKeyPressed: (numKey: string) => void }>(null);
+  const [isInstructionsOpen, setIsInstructionsOpen] = useState(false);
 
   const isMobile = useMediaQuery('(max-width: 1100px)');
 
@@ -21,6 +23,7 @@ export default function App() {
     hitLocation: "Shoulder",
     wentThrough: ["Nothing", "asd"]
   };
+
   const handleButtonClick = (value: string): string => {
     if (guessRef.current) {
       guessRef.current.NumKeyPressed(value);
@@ -28,9 +31,16 @@ export default function App() {
     return value;
   };
 
-
   return (
     <MantineProvider theme={{ fontFamily: 'Aldrich, sans-serif' }}>
+      {/* Button to open Instructions Modal */}
+      <Button onClick={() => setIsInstructionsOpen(true)} style={{ position: 'absolute', top: '20px', right: '20px' }}>
+        Show Instructions
+      </Button>
+
+      {/* Instructions Modal */}
+      <InstructionsPopUp openModal={isInstructionsOpen} />
+
       <Box
         style={{
           width: "100dvw",
