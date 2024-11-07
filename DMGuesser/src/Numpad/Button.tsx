@@ -31,7 +31,7 @@ const Button = ({ value, onClick }: ButtonProps) => {
           alignItems: "center",
           userSelect: "none",
           cursor: "pointer",
-          fontSize: isMobile ? "4vw" : "1.5vw",
+          fontSize: isMobile ? "4dvw" : "1.5dvw",
           transition: "background-color 0.2s",
           backgroundColor: hovered ? "#292929" : "#020202",
 
@@ -39,8 +39,8 @@ const Button = ({ value, onClick }: ButtonProps) => {
         bd="1% solid #c4c4c4"
         c="#a1a1a1"
         radius={10}
-        h = {isMobile ? "7vh" : "7vh"}
-        w = {isMobile ? "7vw" : "2.5vw"}
+        h={isMobile ? "7dvh" : "7dvh"}
+        w={isMobile ? "7dvw" : "2.5dvw"}
         onClick={onClick}
       >
         {value}

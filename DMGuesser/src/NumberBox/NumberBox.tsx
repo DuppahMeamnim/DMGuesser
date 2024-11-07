@@ -12,7 +12,7 @@ interface NumberBoxProps {
 
 <script src=""></script>
 
-export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBoxProps) {
+export default function NumberBox({ word, guess, isGuessed, onClick }: NumberBoxProps) {
 
   const GetSquareColor = (isOutline: boolean): string => {
     const wordInt: number = parseInt(word, 10)
@@ -35,28 +35,34 @@ export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBo
     const wordInt: number = parseInt(word, 10)
     const guessInt: number = parseInt(guess, 10)
 
-    if (!isGuessed){
-      return <CornerDownLeft  strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
-      
+    if (!isGuessed) {
+      return <CornerDownLeft strokeWidth={3} size={isMobile ? "5vw" : "1.5vw"} />
+
     }
 
     if (wordInt == guessInt) {
-      return <Crosshair strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
+      return <Crosshair strokeWidth={3} size={isMobile ? "5vw" : "1.5vw"} />
     }
 
     if (Math.abs(wordInt - guessInt) < 25) {
       if (wordInt > guessInt) {
-        return <ChevronUp strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
+        return <ChevronUp strokeWidth={3} size={isMobile ? "5dvw" : "1.5dvw"} />
       } else {
-        return <ChevronDown strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"}/>
+        return <ChevronDown strokeWidth={3} size={isMobile ? "5dvw" : "1.5dvw"} />
       }
     }
 
     if (wordInt > guessInt) {
-      return <ChevronsUp strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"} 
+      return <ChevronsUp strokeWidth={3} size={isMobile ? "5dvw" : "1.5dvw"}
       />
     } else {
-      return <ChevronsDown strokeWidth={3} size={isMobile ? "4vw" : "1.5vw"} />
+      return <ChevronsDown strokeWidth={3} size={isMobile ? "5dvw" : "1.5dvw"} />
+    }
+  }
+
+  const handleClick = () => {
+    if (!isGuessed) {
+      onClick()
     }
   }
 
@@ -64,12 +70,11 @@ export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBo
 
   return (
     <Flex
-      onClick={onClick}
       justify="center"
       align="center"
-      gap={isMobile ? "10px" : ".5vw"}
-      mt={isMobile ? ".75vh" : ".75vh"}
-      pl={isMobile ? "10px" : ".75vw"}
+      gap={isMobile ? "10px" : ".5dvw"}
+      mt={isMobile ? ".75dvh" : ".75dvh"}
+      pl={isMobile ? "10px" : ".75dvw"}
     >
       {new Array(3).fill(0).map((_, i) => (
         <motion.a
@@ -82,17 +87,17 @@ export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBo
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              fontSize: isMobile ? "4vw" : "1.5vw",
+              fontSize: isMobile ? "4dvw" : "1.5dvw",
               userSelect: 'none',
             }}
             bd="1% solid #c4c4c4"
             radius={15}
-            h={isMobile ? "8vh" : "7vh"}
-            w={isMobile ? "8vh" : "7vh"}
+            h={isMobile ? "8dvh" : "7dvh"}
+            w={isMobile ? "8dvh" : "7dvh"}
             bg="#020202"
             c="#a1a1a1"
           >
-            {<Text size={isMobile ? "6vw" : "1.5vw"}>{guess[i]}</Text>}
+            {<Text size={isMobile ? "6dvw" : "1.5dvw"}>{guess[i]}</Text>}
           </Paper>
         </motion.a>
       ))}
@@ -108,10 +113,11 @@ export default function NumberBox({ word, guess, isGuessed , onClick }: NumberBo
             alignItems: "center",
             userSelect: 'none',
           }}
-          bd={`3px solid ${GetSquareColor(true)}`}
+          onClick={handleClick}
+          bd={`.5dvh solid ${GetSquareColor(true)}`}
           bg={GetSquareColor(false)}
-          h={isMobile ? "6vh" : "6vh"}
-          w={isMobile ? "6vh" : "6vh"}
+          h={isMobile ? "6dvh" : "6dvh"}
+          w={isMobile ? "6dvh" : "6dvh"}
           c="white"
           radius={100}
         >
