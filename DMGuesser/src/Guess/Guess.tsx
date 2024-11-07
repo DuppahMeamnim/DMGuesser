@@ -121,7 +121,7 @@ const Guess = forwardRef(({ damageData }: GuessProps, ref) => {
   const isMobile = useMediaQuery('(max-width: 1100px)');
 
   return (
-    <Box h={400} w={500} mt={isMobile ? "5vh" : "2vh"} style={{ position: 'static' }}>
+    <Box h={400} w={500} mt={isMobile ? "5dvh" : "2dvh"} style={{ position: 'static' }}>
       <Popup word={word} hasGameEnded={hasGameEnded} openModal={openModal} hasWon={hasWon()} currentGuess={currentGuess} />
       {guesses.map((_, i) => (
         <motion.div
