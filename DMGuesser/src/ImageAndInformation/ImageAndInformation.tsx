@@ -19,10 +19,14 @@ export default function ImageAndInformation(damageData: damageData) {
             <ActionIcon
                 variant="transparent"
                 onClick={() => { opened ? close() : open() }}
+                w={isMobile ? "5dvw" : "2dvw"}
+                h={isMobile ? "5dvw" : "2dvw"}
+                mr={isMobile ? "2.2dvw" : ".5dvw"}
+                mt={isMobile ? "2dvw" : ".5dvw"}
                 style={{
                     position: 'absolute',
-                    top: '3vw',
-                    right: '3vw',                    
+                    top: '0%',
+                    right: '0%',
                     color: 'white',
                     borderRadius: '50%',
                     opacity: opened ? 0 : 1,
@@ -30,7 +34,8 @@ export default function ImageAndInformation(damageData: damageData) {
                     transition: 'opacity 0.3s ease, transform 0.3s ease',
                 }}
             >
-                <Info size={isMobile ? "4vw" : "2vw"} />
+                <Info
+                    size="100%" />
             </ActionIcon>
 
             <Image
