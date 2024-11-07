@@ -25,26 +25,26 @@ export default function Popup({ word, hasGameEnded, openModal, hasWon, currentGu
                 styles={{
                     content: {
                         backgroundColor: 'rgba(50, 50, 50, .75)',
-                        borderRadius: "3vh",
+                        borderRadius: "3dvh",
                     },
                 }}>
                 <Flex
                     p={0}
                     m={0}
                     w="100%"
-                    h={hasWon ? "37vh" : "30vh"}
+                    h={hasWon ? "37dvh" : "30dvh"}
                     bg="rgba(5, 5, 5, 1)"
                     bd={20}
                     style={{
-                        borderRadius: "2vh",
+                        borderRadius: "2dvh",
                         flexDirection: "column",
                         justifyContent: "start",
                         alignItems: "center",
                     }}
                 >
                     <Text
-                        mt={"5vh"}
-                        size={"5vh"}
+                        mt={"5dvh"}
+                        size={"5dvh"}
                         fw={700}
                         variant="gradient"
                         gradient={hasWon ? { from: '#243913', to: '#67bb5a', deg: 360 } :
@@ -53,9 +53,9 @@ export default function Popup({ word, hasGameEnded, openModal, hasWon, currentGu
                         {hasWon ? "Win" : "Lose"}
                     </Text>
                     <Text
-                        mt={"6vh"}
-                        pb={"1vh"}
-                        size={"3.5vh"}
+                        mt={"6dvh"}
+                        pb={"1dvh"}
+                        size={"3.5dvh"}
                         variant="gradient"
                         gradient={{ from: '#3b3b3b', to: '#a8a8a8', deg: 360 }}
                         style={{ textAlign: "center" }} >
@@ -64,9 +64,9 @@ export default function Popup({ word, hasGameEnded, openModal, hasWon, currentGu
                     {
                         hasWon &&
                         <Text
-                            mt={"5vh"}
-                            pb={"1vh"}
-                            size={"3.5vh"}
+                            mt={"5dvh"}
+                            pb={"1dvh"}
+                            size={"3.5dvh"}
                             variant="gradient"
                             gradient={{ from: '#252525', to: '#bdbdbd', deg: 360 }}
                             style={{ textAlign: "center" }} >

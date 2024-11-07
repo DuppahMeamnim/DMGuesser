@@ -9,8 +9,8 @@ export default function ImageAndInformation(damageData: damageData) {
     return (
         <Paper
             p={0}
-            w={isMobile ? "80vw" : "28vw"}
-            h={isMobile ? "43vw" : "15vw"}
+            w={isMobile ? "80dvw" : "28dvw"}
+            h={isMobile ? "43dvw" : "15dvw"}
             mb="25px"
             bg="rgba(0, 0, 0, 0)"
             style={{ position: 'relative', display: 'inline-block' }}
@@ -24,17 +24,17 @@ export default function ImageAndInformation(damageData: damageData) {
                 fit="fill"
                 src={damageData.image}
                 style={{
-                    borderRadius: isMobile ? "4vw" : "1vw"
+                    borderRadius: isMobile ? "4dvw" : "1dvw"
                 }}
             />
             {
                 <Flex
                     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                     onClick={() => { opened ? close() : open() }}
-                    w={isMobile ? "80vw" : "28vw"}
-                    h={isMobile ? "43vw" : "15vw"}
+                    w={isMobile ? "80dvw" : "28dvw"}
+                    h={isMobile ? "43dvw" : "15dvw"}
                     style={{
-                        borderRadius: isMobile ? "4vw" : "1vw",
+                        borderRadius: isMobile ? "4dvw" : "1dvw",
                         position: 'absolute',
                         top: '50%',
                         left: '50%',
@@ -47,9 +47,9 @@ export default function ImageAndInformation(damageData: damageData) {
                         transform: opened ? 'translate(-50%, -50%) scale(1)' : 'translate(-50%, -50%) scale(0.9)',
                         transition: 'opacity 0.3s ease, transform 0.3s ease', // smooth fade and scale transitions
                     }}>
-                    <Text ml=".75vw" size={isMobile ? "4vw" : "1.5vw"}>Hit at: {damageData.hitLocation}</Text>
-                    <Text ml=".75vw" size={isMobile ? "4vw" : "1.5vw"}>Weapon: {damageData.weapon}</Text>
-                    <Text ml=".75vw" size={isMobile ? "4vw" : "1.5vw"}>Went through: {damageData.wentThrough.join(", ")}</Text>
+                    <Text ml=".75dvw" size={isMobile ? "4dvw" : "1.5dvw"}>Hit at: {damageData.hitLocation}</Text>
+                    <Text ml=".75dvw" size={isMobile ? "4dvw" : "1.5dvw"}>Weapon: {damageData.weapon}</Text>
+                    <Text ml=".75dvw" size={isMobile ? "4dvw" : "1.5dvw"}>Went through: {damageData.wentThrough.join(", ")}</Text>
                 </Flex>
             }
         </Paper>

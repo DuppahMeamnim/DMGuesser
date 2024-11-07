@@ -33,8 +33,8 @@ export default function App() {
     <MantineProvider theme={{ fontFamily: 'Aldrich, sans-serif' }}>
       <Box
         style={{
-          width: "100vw",
-          height: isMobile ? "100dvh" : "100vh",
+          width: "100dvw",
+          height: isMobile ? "100ddvh" : "100dvh",
           backgroundColor: "#020202",
           display: "flex",
           alignItems: "start",
@@ -43,8 +43,8 @@ export default function App() {
       >
         <Box
           style={{
-            width: isMobile ? "100vw" : "35vw",
-            height: "100vh",
+            width: isMobile ? "100dvw" : "35dvw",
+            height: "100dvh",
             backgroundColor: "#121212",
             display: "flex",
             flexDirection: "column",
@@ -55,9 +55,9 @@ export default function App() {
           }}
         >
           <Text
-            mt={isMobile ? "1vh" : "1vh"}
-            mb={isMobile ? "30px" : "6vh"}
-            size={isMobile ? "12vw" : "4.2vw"}
+            mt={isMobile ? "1dvh" : "1dvh"}
+            mb={isMobile ? "30px" : "6dvh"}
+            size={isMobile ? "12dvw" : "4.2dvw"}
             variant="gradient"
             gradient={{ from: '#020202', to: '#f2f2f2', deg: 360 }}
             style={{ textAlign: "center" }}
