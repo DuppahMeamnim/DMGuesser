@@ -1,6 +1,7 @@
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import damageData from "../DamageData/damageData";
-import { Flex, Image, Paper, Text } from "@mantine/core";
+import { ActionIcon, Flex, Image, Paper, Text } from "@mantine/core";
+import { Info } from "react-feather";
 
 export default function ImageAndInformation(damageData: damageData) {
     const [opened, { close, open }] = useDisclosure(false);
@@ -15,8 +16,29 @@ export default function ImageAndInformation(damageData: damageData) {
             bg="rgba(0, 0, 0, 0)"
             style={{ position: 'relative', display: 'inline-block' }}
         >
+            <ActionIcon
+                variant="transparent"
+                onClick={() => { opened ? close() : open() }}
+                w={isMobile ? "5dvw" : "2dvw"}
+                h={isMobile ? "5dvw" : "2dvw"}
+                mr={isMobile ? "2.2dvw" : ".5dvw"}
+                mt={isMobile ? "2dvw" : ".5dvw"}
+                style={{
+                    position: 'absolute',
+                    top: '0%',
+                    right: '0%',
+                    color: 'white',
+                    borderRadius: '50%',
+                    opacity: opened ? 0 : 1,
+                    transform: opened ? 'scale(0.9)' : 'scale(1)',
+                    transition: 'opacity 0.3s ease, transform 0.3s ease',
+                }}
+            >
+                <Info
+                    size="100%" />
+            </ActionIcon>
+
             <Image
-                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                 onClick={() => { opened ? close() : open() }}
                 radius={15}
                 width="100%"
@@ -27,9 +49,9 @@ export default function ImageAndInformation(damageData: damageData) {
                     borderRadius: isMobile ? "4dvw" : "1dvw"
                 }}
             />
+
             {
                 <Flex
-                    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                     onClick={() => { opened ? close() : open() }}
                     w={isMobile ? "80dvw" : "28dvw"}
                     h={isMobile ? "43dvw" : "15dvw"}
@@ -53,5 +75,5 @@ export default function ImageAndInformation(damageData: damageData) {
                 </Flex>
             }
         </Paper>
-    )
+    );
 }
