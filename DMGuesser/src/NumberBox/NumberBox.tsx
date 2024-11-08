@@ -111,7 +111,8 @@ export default function NumberBox({ word, guess, isGuessed, onClick }: NumberBox
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            userSelect: 'none',
+            userSelect: "none",
+            cursor: isGuessed ? "" : "pointer",
           }}
           onClick={handleClick}
           bd={`.5dvh solid ${GetSquareColor(true)}`}
