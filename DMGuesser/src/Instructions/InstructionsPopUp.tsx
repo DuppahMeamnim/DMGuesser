@@ -25,6 +25,7 @@ export default function InstructionsPopUp({ openModal, closeModal }: PopupProps)
       }}
       withCloseButton={false}
       centered
+      size = {isMobile ? "" : "30dvw"}
       styles={{
         content: {
           backgroundColor: 'rgba(50, 50, 50, .75)',
@@ -79,8 +80,7 @@ export default function InstructionsPopUp({ openModal, closeModal }: PopupProps)
           fw={700}
           variant="gradient"
           gradient={{ from: '#243913', to: '#67bb5a', deg: 360 }}
-          style={{ textAlign: "center" }}
-        >
+          style={{ textAlign: "center", userSelect: 'none' }}        >
           How to Play
         </Text>
         <Text
@@ -123,6 +123,15 @@ export default function InstructionsPopUp({ openModal, closeModal }: PopupProps)
         >
           Good luck!
         </Text>
+        <Text
+            size={"2dvh"}
+            variant="gradient"
+            gradient={{ from: '#252525', to: '#525151', deg: 360 }}
+            style={{ textAlign: "center" }}
+            >
+            We broke, <a href="https://www.paypal.com/donate/?hosted_button_id=568DT9WAJYF9L" style={{ color: 'inherit', textDecoration: 'underline', textDecorationColor: '#717171' }}>donate?</a> :3
+        </Text>
+
       </Flex>
     </Modal>
   );
