@@ -69,7 +69,7 @@ export default function App() {
               justifyContent: "center",
               width: "100%",
               marginBottom: isMobile ? "30px" : "6dvh",
-              paddingTop: isMobile ? "10px" : "0px", // Adjust padding to avoid clipping
+              paddingTop: isMobile ? "10px" : "0px",
             }}
           >
     <ActionIcon
