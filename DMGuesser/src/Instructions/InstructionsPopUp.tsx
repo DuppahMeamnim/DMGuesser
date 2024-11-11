@@ -114,6 +114,16 @@ export default function InstructionsPopUp({ openModal, closeModal }: PopupProps)
           - Each guess will tell you how close you are to the number.
         </Text>
         <Text
+          mt={"1.5dvh"}
+          pb={"1dvh"}
+          size={"2.5dvh"}
+          variant="gradient"
+          gradient={{ from: '#3b3b3b', to: '#a8a8a8', deg: 360 }}
+          style={{ textAlign: "center" }}
+        >
+          ( ! ) For additional info press the image.
+        </Text>
+        <Text
           mt={"3dvh"}
           pb={"1dvh"}
           size={"3.5dvh"}
