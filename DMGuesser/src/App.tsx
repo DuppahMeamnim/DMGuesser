@@ -79,7 +79,7 @@ export default function App() {
               style={{
                 position: 'absolute',
                 top: isMobile ? "2dvh" : "2dvh",
-                right: isMobile ? "87dvw" : "64dvw",
+                right: isMobile ? "2dvw" : "32.6dvw",
                 marginRight: "10px", color: "#f2f2f2"
               }}
             >
