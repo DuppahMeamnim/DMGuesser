@@ -20,7 +20,7 @@ const Button = ({ value, onClick }: ButtonProps) => {
         justifyContent: "center",
         alignItems: "center",
         userSelect: "none",
-        cursor: "pointer",
+        cursor: "cursor",
       }}
     >
       <Paper
