@@ -72,14 +72,19 @@ export default function App() {
               paddingTop: isMobile ? "10px" : "0px",
             }}
           >
-    <ActionIcon
-  onClick={() => setIsInstructionsOpen(true)}
-  variant="transparent"
-  size={isMobile ? "6dvw" : "5dvh"}
-  style={{ marginRight: "10px", color: "#f2f2f2" }}
->
-  <HelpCircle size="100%" />
-</ActionIcon>
+            <ActionIcon
+              onClick={() => setIsInstructionsOpen(true)}
+              variant="transparent"
+              size={isMobile ? "6dvw" : "2.7dvw"}
+              style={{
+                position: 'absolute',
+                top: isMobile ? "1dvh" : "1dvh",
+                right: isMobile ? "87dvw" : "64dvw",
+                marginRight: "10px", color: "#f2f2f2"
+              }}
+            >
+              <HelpCircle size="100%" />
+            </ActionIcon>
 
             <Text
               size={isMobile ? "10vw" : "4.2vw"}
