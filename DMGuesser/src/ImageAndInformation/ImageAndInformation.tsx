@@ -2,10 +2,36 @@ import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import damageData from "../DamageData/damageData";
 import { ActionIcon, Flex, Image, Paper, Text } from "@mantine/core";
 import { Info } from "react-feather";
+import { useEffect, useState } from "react";
 
 export default function ImageAndInformation(damageData: damageData) {
     const [opened, { close, open }] = useDisclosure(false);
     const isMobile = useMediaQuery('(max-width: 1100px)')
+    const [isBouncing, setIsBouncing] = useState(false);
+    const [hasBeenOpened, setHasBeenOpened] = useState(false);
+
+    useEffect(() => {
+        if (!hasBeenOpened) {
+            const interval = setInterval(() => {
+                setIsBouncing(true);
+
+                setTimeout(() => setIsBouncing(false), 600); 
+
+            }, 5000);
+
+            return () => clearInterval(interval);
+        }
+    }, [hasBeenOpened]);
+
+    const handleClick = () => {
+        if (opened) {
+            close();
+        } else {
+            open();
+            setHasBeenOpened(true);
+        }
+        setIsBouncing(false);
+    };
 
     return (
         <Paper
@@ -18,7 +44,8 @@ export default function ImageAndInformation(damageData: damageData) {
         >
             <ActionIcon
                 variant="transparent"
-                onClick={() => { opened ? close() : open() }}
+                className={isBouncing ? "bounce-animation" : ""}
+                onClick={handleClick}
                 w={isMobile ? "5dvw" : "2dvw"}
                 h={isMobile ? "5dvw" : "2dvw"}
                 mr={isMobile ? "2.2dvw" : ".5dvw"}
@@ -39,7 +66,7 @@ export default function ImageAndInformation(damageData: damageData) {
             </ActionIcon>
 
             <Image
-                onClick={() => { opened ? close() : open() }}
+                onClick={handleClick}
                 radius={15}
                 width="100%"
                 height="100%"
@@ -52,7 +79,7 @@ export default function ImageAndInformation(damageData: damageData) {
 
             {
                 <Flex
-                    onClick={() => { opened ? close() : open() }}
+                    onClick={handleClick}
                     w={isMobile ? "80dvw" : "28dvw"}
                     h={isMobile ? "43dvw" : "15dvw"}
                     style={{
