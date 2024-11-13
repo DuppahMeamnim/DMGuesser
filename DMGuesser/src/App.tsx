@@ -78,13 +78,14 @@ export default function App() {
               size={isMobile ? "6dvw" : "2.7dvw"}
               style={{
                 position: 'absolute',
-                top: isMobile ? "2dvh" : "2dvh",
-                right: isMobile ? "2dvw" : "32.6dvw",
+                top: isMobile ? "1dvh" : "1dvh",
+                right: isMobile ? "87dvw" : "64dvw",
                 marginRight: "10px", color: "#f2f2f2"
               }}
             >
               <HelpCircle size="100%" />
             </ActionIcon>
+
             <Text
               size={isMobile ? "10vw" : "4.2vw"}
               variant="gradient"
