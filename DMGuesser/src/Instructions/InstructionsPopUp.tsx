@@ -42,7 +42,6 @@ export default function InstructionsPopUp({
         },
       }}
     >
-      {/* Modal Content */}
       <Flex
         p="3dvh"
         w="100%"
@@ -56,7 +55,6 @@ export default function InstructionsPopUp({
           position: "relative",
         }}
       >
-        {/* Close Button */}
         <ActionIcon
           onClick={() => {
             close();
@@ -76,9 +74,8 @@ export default function InstructionsPopUp({
           <XCircle size="100%" />
         </ActionIcon>
 
-        {/* Text Content */}
         <Text
-          size={"5dvh"}
+          size={isMobile ? "3.5dvh" : "5dvh"}
           fw={700}
           variant="gradient"
           gradient={{ from: "#243913", to: "#67bb5a", deg: 360 }}
@@ -89,7 +86,7 @@ export default function InstructionsPopUp({
         <Text
           mt={"2dvh"}
           pb={"1dvh"}
-          size={"3.5dvh"}
+          size={isMobile ? "2dvh" : "3dvh"}
           variant="gradient"
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
           style={{ textAlign: "center" }}
@@ -99,27 +96,18 @@ export default function InstructionsPopUp({
         <Text
           mt={"2dvh"}
           pb={"1dvh"}
-          size={"2.5dvh"}
+          size={isMobile ? "1.5dvh" : "2.5dvh"}
           variant="gradient"
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
           style={{ textAlign: "center" }}
         >
           - You have a limited number of guesses to figure out the number.
         </Text>
+
         <Text
           mt={"1.5dvh"}
           pb={"1dvh"}
-          size={"2.5dvh"}
-          variant="gradient"
-          gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
-          style={{ textAlign: "center" }}
-        >
-          - Each guess will tell you how close you are to the number.
-        </Text>
-        <Text
-          mt={"1.5dvh"}
-          pb={"1dvh"}
-          size={"2.5dvh"}
+          size={isMobile ? "1.5dvh" : "2.5dvh"}
           variant="gradient"
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
           style={{ textAlign: "center" }}
@@ -129,7 +117,7 @@ export default function InstructionsPopUp({
         <Text
           mt={"0.5dvh"}
           pb={"1dvh"}
-          size={"3.5dvh"}
+          size={isMobile ? "2.5dvh" : "3.5dvh"}
           variant="gradient"
           gradient={{ from: "#252525", to: "#bdbdbd", deg: 360 }}
           style={{ textAlign: "center" }}
@@ -137,12 +125,10 @@ export default function InstructionsPopUp({
           Good luck!
         </Text>
         <Text
-          mt={"1dvh"}
-          pb={"1dvh"}
-          size={"5dvh"}
+          size={isMobile ? "3.5dvh" : "5dvh"}
           fw={700}
           variant="gradient"
-          gradient={{ from: "#243913", to: "#67bb5a", deg: 360 }}
+          gradient={{ from: "#001aff", to: "#76a0df", deg: 360 }}
           style={{ textAlign: "center", userSelect: "none" }}
         >
           About
@@ -150,7 +136,7 @@ export default function InstructionsPopUp({
         <Text
           mt={"1dvh"}
           pb={"1dvh"}
-          size={"2.3dvh"}
+          size={isMobile ? "1.3dvh" : "2.3dvh"}
           variant="gradient"
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
           style={{ textAlign: "center" }}
@@ -161,7 +147,7 @@ export default function InstructionsPopUp({
         <Text
           mt={"1dvh"}
           pb={"1dvh"}
-          size={"2.3dvh"}
+          size={isMobile ? "1.3dvh" : "2.3dvh"}
           variant="gradient"
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
           style={{ textAlign: "center" }}
@@ -169,25 +155,40 @@ export default function InstructionsPopUp({
           Have any advice or changes please contect us at:
         </Text>
         <Text
-          size={"2dvh"}
+          size={isMobile ? "1.5dvh" : "2dvh"}
           variant="gradient"
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
-          style={{ textAlign: "center", marginRight: "11vh" }}
+          style={{ textAlign: "center", marginRight: "3dvh" }}
         >
           Email:
-          <a href="mailto:magnetiinc@gmail.com"> magnetiinc@gmail.com</a>
+          <a
+            href="mailto:magnetiinc@gmail.com"
+            style={{
+              color: "inherit",
+              textDecoration: "underline",
+              textDecorationColor: "#717171",
+            }}
+          >
+            {" "}
+            magnetiinc@gmail.com
+          </a>
         </Text>
         <Text
           mt={"1dvh"}
           pb={"1dvh"}
-          size={"2dvh"}
+          size={isMobile ? "1.5dvh" : "2dvh"}
           variant="gradient"
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
-          style={{ textAlign: "center", marginRight: "20vh" }}
+          style={{ textAlign: "center", marginRight: "3dvh" }}
         >
           Bluesky:{" "}
           <a
             href="https://bsky.app/profile/magnetiinc.bsky.social"
+            style={{
+              color: "inherit",
+              textDecoration: "underline",
+              textDecorationColor: "#717171",
+            }}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -195,7 +196,9 @@ export default function InstructionsPopUp({
           </a>
         </Text>
         <Text
-          size={"2dvh"}
+          mt={"0.5dvh"}
+          pb={"0.5dvh"}
+          size={isMobile ? "1.5dvh" : "2dvh"}
           variant="gradient"
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
           style={{ textAlign: "center" }}
@@ -216,12 +219,12 @@ export default function InstructionsPopUp({
 
         <Text
           mt={"2dvh"}
-          size={"2.5dvh"}
+          size={isMobile ? "1.5dvh" : "2.5dvh"}
           variant="gradient"
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
           style={{ textAlign: "center" }}
         >
-          All rights go to the images go to value softwre.
+          All image rights belong to Valve Software.
         </Text>
       </Flex>
     </Modal>
