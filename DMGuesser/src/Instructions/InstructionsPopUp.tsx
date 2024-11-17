@@ -2,6 +2,9 @@ import { Flex, Modal, Text, ActionIcon } from "@mantine/core";
 import { useEffect } from "react";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import { XCircle } from "react-feather";
+import PayPalIcon from "../assets/PayPal_Icon.png";
+import GmailIcon from "../assets/Gmail_Icon.png";
+import TwitterIcon from "../assets/Twiiter_Icon.png";
 
 interface PopupProps {
   openModal: boolean;
@@ -128,7 +131,7 @@ export default function InstructionsPopUp({
           size={isMobile ? "3.5dvh" : "5dvh"}
           fw={700}
           variant="gradient"
-          gradient={{ from: "#001aff", to: "#76a0df", deg: 360 }}
+          gradient={{ from: "#f14141", to: "#881515", deg: 360 }}
           style={{ textAlign: "center", userSelect: "none" }}
         >
           About
@@ -154,69 +157,116 @@ export default function InstructionsPopUp({
         >
           Have any advice or changes please contect us at:
         </Text>
-        <Text
-          size={isMobile ? "1.5dvh" : "2dvh"}
-          variant="gradient"
-          gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
-          style={{ textAlign: "center", marginRight: "3dvh" }}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+          }}
         >
-          Email:
-          <a
-            href="mailto:magnetiinc@gmail.com"
+          <img
+            src={GmailIcon}
+            alt="Gmail Icon"
             style={{
-              color: "inherit",
-              textDecoration: "underline",
-              textDecorationColor: "#717171",
+              height: isMobile ? "3dvh" : "4dvh",
+              width: "auto",
             }}
+          />
+          <Text
+            size={isMobile ? "1.5dvh" : "2dvh"}
+            variant="gradient"
+            gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
+            style={{ textAlign: "center", marginRight: "3dvh" }}
           >
-            {" "}
-            magnetiinc@gmail.com
-          </a>
-        </Text>
-        <Text
-          mt={"1dvh"}
-          pb={"1dvh"}
-          size={isMobile ? "1.5dvh" : "2dvh"}
-          variant="gradient"
-          gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
-          style={{ textAlign: "center", marginRight: "3dvh" }}
+            <a
+              href="mailto:magnetiinc@gmail.com"
+              style={{
+                color: "inherit",
+                textDecoration: "underline",
+                textDecorationColor: "#717171",
+              }}
+            >
+              magnetiinc@gmail.com
+            </a>
+          </Text>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+          }}
         >
-          Bluesky:{" "}
-          <a
-            href="https://bsky.app/profile/magnetiinc.bsky.social"
+          <img
+            src={TwitterIcon}
+            alt="Twitter Icon"
             style={{
-              color: "inherit",
-              textDecoration: "underline",
-              textDecorationColor: "#717171",
+              height: isMobile ? "2.5dvh" : "3.5dvh",
+              width: "auto",
             }}
-            target="_blank"
-            rel="noopener noreferrer"
+          />
+          <Text
+            mt={"1dvh"}
+            pb={"1dvh"}
+            size={isMobile ? "1.5dvh" : "2dvh"}
+            variant="gradient"
+            gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
+            style={{ textAlign: "center", marginRight: "3dvh" }}
           >
-            Magneti Inc
-          </a>
-        </Text>
-        <Text
-          mt={"0.5dvh"}
-          pb={"0.5dvh"}
-          size={isMobile ? "1.5dvh" : "2dvh"}
-          variant="gradient"
-          gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
-          style={{ textAlign: "center" }}
+            <a
+              href="https://x.com/MagnetiInc"
+              style={{
+                color: "inherit",
+                textDecoration: "underline",
+                textDecorationColor: "#717171",
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Magneti Inc
+            </a>
+          </Text>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+          }}
         >
-          We broke,{" "}
-          <a
-            href="https://www.paypal.com/donate/?hosted_button_id=568DT9WAJYF9L"
+          <img
+            src={PayPalIcon}
+            alt="PayPal Icon"
             style={{
-              color: "inherit",
-              textDecoration: "underline",
-              textDecorationColor: "#717171",
+              height: isMobile ? "2.5dvh" : "3.5dvh",
+              width: "auto",
             }}
+          />
+          <Text
+            mt={"0.5dvh"}
+            pb={"0.5dvh"}
+            size={isMobile ? "1.5dvh" : "2dvh"}
+            variant="gradient"
+            gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
+            style={{ textAlign: "center" }}
           >
-            Donate?
-          </a>{" "}
-          :3
-        </Text>
-
+            We broke,{" "}
+            <a
+              href="https://www.paypal.com/donate/?hosted_button_id=568DT9WAJYF9L"
+              style={{
+                color: "inherit",
+                textDecoration: "underline",
+                textDecorationColor: "#717171",
+              }}
+            >
+              Donate?
+            </a>{" "}
+            :3
+          </Text>
+        </div>
         <Text
           mt={"2dvh"}
           size={isMobile ? "1.5dvh" : "2.5dvh"}
