@@ -5,7 +5,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import Guess from "./Guess/Guess";
 import ImageAndInformation from "./ImageAndInformation/ImageAndInformation";
 import Numpad from "./Numpad/Numpad";
-import damageData, { damageDataCollection } from "./DamageData/damageData";
+import damageData, { getDailyDamageData } from "./DamageData/damageData";
 import { useRef, useState } from "react";
 import InstructionsPopUp from "./Instructions/InstructionsPopUp";
 import { HelpCircle } from "react-feather";
@@ -16,7 +16,7 @@ export default function App() {
 
   const isMobile = useMediaQuery("(max-width: 1100px)");
 
-  const damageData: damageData = damageDataCollection[5];
+  const damageData: damageData = getDailyDamageData();
 
   const handleButtonClick = (value: string): string => {
     if (guessRef.current) {

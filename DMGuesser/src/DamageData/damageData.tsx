@@ -21,6 +21,18 @@ export default interface damageData {
   wentThrough: string[];
 }
 
+export const getDailyDamageData = (): damageData => {
+  const startDate = new Date("2024-11-17").getTime();
+  const today = new Date().getTime();
+  const differenceInDays = today - startDate;
+  const differenceInTime = Math.floor(differenceInDays / (1000 * 60 * 60 * 24));
+  console.log(differenceInTime);
+  
+  const todayIndex = Math.abs(differenceInTime) % damageDataCollection.length;
+
+  return damageDataCollection[todayIndex];
+};
+
 export const damageDataCollection: damageData[] = [
   {
     image: Image78,
