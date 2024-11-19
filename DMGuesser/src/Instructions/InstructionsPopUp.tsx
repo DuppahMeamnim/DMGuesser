@@ -178,7 +178,7 @@ export default function InstructionsPopUp({
                 textDecorationColor: "#717171",
               }}
             >
-              Contact Us
+              MagnetiInc@gmail.com
             </a>
           </Text>
         </div>
