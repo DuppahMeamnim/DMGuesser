@@ -22,7 +22,7 @@ export default interface damageData {
 }
 
 export const getDailyDamageData = (): damageData => {
-  const startDate = new Date("2024-11-17").getTime();
+  const startDate = new Date("2024-11-19").getTime();
   const today = new Date().getTime();
   const differenceInMilliseconds = today - startDate;
   const differenceInDays = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
