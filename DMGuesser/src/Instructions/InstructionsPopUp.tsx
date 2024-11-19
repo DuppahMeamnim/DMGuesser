@@ -144,25 +144,16 @@ export default function InstructionsPopUp({
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
           style={{ textAlign: "center" }}
         >
-          Magneti Inc is a 4 developer team specializing in game development.
-          Follow us if you're bored.
-        </Text>
-        <Text
-          mt={"1dvh"}
-          pb={"1dvh"}
-          size={isMobile ? "1.3dvh" : "2.3dvh"}
-          variant="gradient"
-          gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
-          style={{ textAlign: "center" }}
-        >
-          Have any advice or changes please contect us at:
+          Magneti Inc is a stupid project by 4 stupid man.
         </Text>
         <div
           style={{
+            width: isMobile ? "40dvw" : "13dvw",
+            height: isMobile ? "6dvw" : "2dvw",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
+            justifyContent: "start",
+            gap: "1dvw",
           }}
         >
           <img
@@ -187,16 +178,18 @@ export default function InstructionsPopUp({
                 textDecorationColor: "#717171",
               }}
             >
-              magnetiinc@gmail.com
+              Contact Us
             </a>
           </Text>
         </div>
         <div
           style={{
+            width: isMobile ? "40dvw" : "13dvw",
+            height: isMobile ? "6dvw" : "2dvw",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
+            justifyContent: "start",
+            gap: "1dvw",
           }}
         >
           <img
@@ -225,16 +218,18 @@ export default function InstructionsPopUp({
               target="_blank"
               rel="noopener noreferrer"
             >
-              Magneti Inc
+              Follow Us
             </a>
           </Text>
         </div>
         <div
           style={{
+            width: isMobile ? "40dvw" : "13dvw",
+            height: isMobile ? "6dvw" : "2dvw",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
+            justifyContent: "start",
+            gap: "1dvw",
           }}
         >
           <img
@@ -253,7 +248,6 @@ export default function InstructionsPopUp({
             gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
             style={{ textAlign: "center" }}
           >
-            We broke,{" "}
             <a
               href="https://www.paypal.com/donate/?hosted_button_id=568DT9WAJYF9L"
               style={{
@@ -262,14 +256,13 @@ export default function InstructionsPopUp({
                 textDecorationColor: "#717171",
               }}
             >
-              Donate?
+              We Broke, Donate?
             </a>{" "}
-            :3
           </Text>
         </div>
         <Text
           mt={"2dvh"}
-          size={isMobile ? "1.5dvh" : "2.5dvh"}
+          size={isMobile ? "1dvh" : "1.5dvh"}
           variant="gradient"
           gradient={{ from: "#3b3b3b", to: "#a8a8a8", deg: 360 }}
           style={{ textAlign: "center" }}
