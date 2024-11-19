@@ -3,10 +3,9 @@ import "@mantine/core/styles.css";
 import { MantineProvider, Box, Text, ActionIcon } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import Guess from "./Guess/Guess";
-import exampleImage from "./assets/csExampleImage.png";
 import ImageAndInformation from "./ImageAndInformation/ImageAndInformation";
 import Numpad from "./Numpad/Numpad";
-import damageData from "./DamageData/damageData";
+import damageData, { getDailyDamageData } from "./DamageData/damageData";
 import { useRef, useState } from "react";
 import InstructionsPopUp from "./Instructions/InstructionsPopUp";
 import { HelpCircle } from "react-feather";
@@ -17,13 +16,7 @@ export default function App() {
 
   const isMobile = useMediaQuery("(max-width: 1100px)");
 
-  const damageData: damageData = {
-    image: exampleImage,
-    word: "034",
-    weapon: "ak47",
-    hitLocation: "Shoulder",
-    wentThrough: ["Nothing", "asd"],
-  };
+  const damageData: damageData = getDailyDamageData();
 
   const handleButtonClick = (value: string): string => {
     if (guessRef.current) {
@@ -77,10 +70,11 @@ export default function App() {
               variant="transparent"
               size={isMobile ? "6dvw" : "2.7dvw"}
               style={{
-                position: 'absolute',
+                position: "absolute",
                 top: isMobile ? "1dvh" : "1dvh",
                 right: isMobile ? "87dvw" : "64dvw",
-                marginRight: "10px", color: "#f2f2f2"
+                marginRight: "10px",
+                color: "#f2f2f2",
               }}
             >
               <HelpCircle size="100%" />
