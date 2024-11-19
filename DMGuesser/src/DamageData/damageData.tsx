@@ -34,18 +34,18 @@ export const getDailyDamageData = (): damageData => {
 
 export const damageDataCollection: damageData[] = [
   {
-    image: Image78,
-    word: "078",
-    weapon: "AWP",
-    hitLocation: "Shoulder",
-    wentThrough: ["Dust 2 double door"],
-  },
-  {
     image: Image104,
     word: "104",
     weapon: "AK-47",
     hitLocation: "Head",
     wentThrough: ["Dust 2 mid pole"],
+  },
+  {
+    image: Image78,
+    word: "078",
+    weapon: "AWP",
+    hitLocation: "Shoulder",
+    wentThrough: ["Dust 2 double door"],
   },
   {
     image: Image82,
